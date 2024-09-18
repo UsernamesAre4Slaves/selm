@@ -1,0 +1,8 @@
+neuro_evolution_script: "scripts/neuro_evolution.py"
+arguments:
+  generations: 50
+  population_size: 100
+  mutation_rate: 0.05
+  crossover_rate: 0.7
+  model_type: "transformer"
+  dataset: "dataset/imdb"

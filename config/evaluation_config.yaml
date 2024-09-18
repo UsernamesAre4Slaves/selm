@@ -1,0 +1,6 @@
+model_name: "bert-base-uncased"
+dataset_name: "imdb"
+num_labels: 2
+batch_size: 16
+model_path: "model_output/latest_model"
+output_file: "evaluation_results.yaml"

@@ -1,0 +1,12 @@
+graph_data_path: "data/knowledge_graph/graph_data.csv"
+gnn:
+  input_dim: 128
+  hidden_dim: 64
+  output_dim: 10
+  num_layers: 2
+  conv_type: 'GCN'   # 'GCN' or 'SAGE'
+  dropout: 0.5
+training:
+  batch_size: 32
+  learning_rate: 0.001
+  epochs: 50

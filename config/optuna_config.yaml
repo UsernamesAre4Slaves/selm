@@ -1,0 +1,40 @@
+# Optuna Hyperparameter Tuning Configuration
+
+# Study configuration
+study_name: "seml_hyperparameter_tuning"  # Name of the Optuna study
+direction: "maximize"  # Optimization direction ("maximize" for accuracy, "minimize" for loss)
+
+# Hyperparameter search space
+hyperparameters:
+  learning_rate:
+    type: "loguniform"  # Distribution type
+    low: 1e-5  # Lower bound of the range
+    high: 1e-1  # Upper bound of the range
+  
+  batch_size:
+    type: "categorical"  # Distribution type
+    choices: [8, 16, 32]  # List of possible values
+
+  num_epochs:
+    type: "int"  # Distribution type
+    low: 3  # Minimum number of epochs
+    high: 10  # Maximum number of epochs
+
+# Optimization configuration
+n_trials: 10  # Number of trials for Optuna to run
+timeout: 3600  # Maximum time (in seconds) for the optimization process
+
+# Pruning configuration
+pruning:
+  enabled: true  # Whether to enable pruning
+  trial_pruner:
+    type: "median"  # Pruning strategy
+    patience: 3  # Number of trials to wait before pruning
+
+# Logging configuration
+logging:
+  level: "info"  # Logging level (e.g., info, debug, warning, error)
+  log_interval: 10  # Interval (in trials) to log progress
+
+# Output configuration
+output_dir: "optuna_results/"  # Directory to save Optuna study results

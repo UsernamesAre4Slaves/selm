@@ -1,0 +1,80 @@
+# Distributed Training and Inference Configuration for SELM
+distributed:
+  enabled: true                    # Enable/disable distributed training
+  backend: "nccl"                  # Backend to use for communication (options: nccl, gloo, mpi)
+  init_method: "env://"
+  
+  # GPU Configuration
+  gpu:
+    use_gpus: true                 # Set to true to use GPUs
+    num_gpus_per_node: 4           # Number of GPUs per node
+    sync_batch_norm: true          # Use synchronized batch normalization across GPUs
+    mixed_precision: true          # Enable mixed-precision (FP16) training for faster performance
+    gradient_accumulation: true    # Enable gradient accumulation to simulate larger batch sizes
+
+  # Multi-node Configuration
+  multi_node:
+    enabled: true                  # Enable multi-node distributed training
+    num_nodes: 2                   # Total number of nodes
+    node_rank: 0                   # Rank of the current node (to be set dynamically per node)
+    master_addr: "127.0.0.1"       # IP address of the master node
+    master_port: 29500             # Port number for communication with the master node
+    timeout: 600                   # Timeout for initialization in seconds
+
+  # Distributed Data Parallelism
+  data_parallel:
+    strategy: "ddp"                # Data parallel strategy (options: ddp, ddp_spawn, dp)
+    find_unused_parameters: false  # Enable if using layers/modules that may not always be used
+    bucket_cap_mb: 25              # Bucket size for gradient all-reduce (in MB)
+
+  # Model Parallelism and Sharding
+  model_parallel:
+    enabled: true                  # Enable model sharding across GPUs/nodes
+    sharding_strategy: "ZeRO"      # Strategy for model sharding (options: ZeRO, pipeline_parallel)
+    zero_stage: 2                  # ZeRO optimization stage (1, 2, or 3)
+    partition_activations: true    # Enable activation partitioning to save memory
+    cpu_offload: true              # Offload gradients/parameters to CPU to reduce memory usage
+
+  # Checkpointing and Fault Tolerance
+  checkpointing:
+    checkpoint_dir: "checkpoints/" # Directory to store checkpoints
+    checkpoint_frequency: 5        # Save a checkpoint every N epochs
+    resume_from_checkpoint: true   # Resume training from a saved checkpoint
+    backup_strategy: "distributed" # Strategy for backing up checkpoints (options: local, distributed)
+  
+  # Optimizations
+  optimizations:
+    overlap_communication_computation: true  # Overlap communication with computation to improve performance
+    gradient_clipping: 1.0                   # Max norm for gradient clipping to stabilize training
+    all_reduce_compression: "fp16"           # Use FP16 compression for all-reduce operations
+    pipeline_parallel_size: 8                # Number of stages for pipeline parallelism (if enabled)
+    memory_efficient_fp16: true              # Memory-efficient mixed precision training
+
+  # Communication and Networking
+  communication:
+    communication_backend: "nccl"           # Communication backend for distributed training
+    async_collective_operations: true       # Enable asynchronous collective operations to reduce communication overhead
+    overlap_io_with_computation: true       # Overlap I/O operations with computation
+    bandwidth_threshold: 10                 # Network bandwidth threshold in Gbps
+    network_latency_tolerance: 5            # Network latency tolerance in milliseconds
+
+  # Logging and Monitoring
+  logging:
+    log_distributed_training: true          # Enable logging for distributed training processes
+    log_frequency: 100                      # Log progress every N steps
+    log_file: "logs/distributed_training.log" # Log file path
+    tensorboard_logging: true               # Enable TensorBoard for visualization
+    profiling: true                         # Enable profiling of distributed operations for performance tuning
+
+  # Evaluation Settings
+  evaluation:
+    distributed_evaluation: true            # Enable evaluation in a distributed environment
+    eval_batch_size_per_gpu: 16             # Batch size for evaluation per GPU
+    eval_aggregation_strategy: "mean"       # Strategy for aggregating results from multiple GPUs (options: mean, sum)
+
+  # Environment Variables
+  environment_variables:
+    MASTER_ADDR: "127.0.0.1"                # Master node address for distributed processes
+    MASTER_PORT: "29500"                    # Port for master node communication
+    WORLD_SIZE: 8                           # Total number of GPUs or processes involved in distributed training
+    NCCL_DEBUG: "INFO"                      # Set NCCL debug level (INFO for detailed logs)

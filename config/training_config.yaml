@@ -1,0 +1,40 @@
+# Training configuration
+model_name: "distilbert-base-uncased"  # Pretrained model to use
+num_labels: 2  # Number of labels for classification task
+
+# Data configuration
+dataset_name: "glue"  # Dataset name (e.g., GLUE)
+dataset_config_name: "mrpc"  # Specific dataset configuration (e.g., MRPC)
+max_seq_length: 128  # Maximum sequence length for tokenization
+
+# Training parameters
+learning_rate: 5e-5  # Initial learning rate
+batch_size: 16  # Batch size for training
+num_epochs: 5  # Number of training epochs
+
+# Optimization configuration
+optimizer:
+  type: "AdamW"  # Optimizer type
+  weight_decay: 0.01  # Weight decay for optimizer
+
+# Scheduler configuration
+scheduler:
+  type: "linear"  # Learning rate scheduler type (e.g., "linear", "cosine")
+  warmup_steps: 500  # Number of warmup steps for the scheduler
+
+# Logging and output configuration
+logging:
+  level: "info"  # Logging level (e.g., info, debug, warning, error)
+  save_steps: 500  # Number of steps between saving checkpoints
+  output_dir: "model_output/"  # Directory to save model checkpoints
+
+# Evaluation configuration
+evaluation:
+  metrics: ["accuracy"]  # Metrics to compute during evaluation
+  eval_steps: 500  # Number of steps between evaluations
+
+# Early stopping configuration
+early_stopping:
+  enabled: true  # Whether early stopping is enabled
+  patience: 3  # Number of epochs to wait for improvement before stopping
+  metric: "accuracy"  # Metric to monitor for early stopping
