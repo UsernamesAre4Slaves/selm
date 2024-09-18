@@ -151,16 +151,12 @@ To evaluate the model, send a request to the evaluation endpoint:
 To run Optuna hyperparameter tuning:
 <code>curl -X POST http://localhost:5000/api/optimize</code>
 
-### Tasks
-
-## SELM supports the following tasks:
+### SELM supports the following tasks:
 Text Classification: Classify text into predefined categories.
 Summarization: Generate summaries of longer texts.
 Question Answering: Answer questions based on provided context.
 
-### Contributing
-
-## Contributions are welcome! Please follow these steps:
+### Contributions are welcome! Please follow these steps:
 Fork the repository.
 Create a feature branch.
 Commit your changes.
