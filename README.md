@@ -123,19 +123,19 @@ To set up the SELM project, follow these steps:
    cd SELM
    
 2. Install Python dependencies:
-   pip install -r requirements.txt
+   <code>pip install -r requirements.txt</code>
 
 3. Install Node.js dependencies for the front-end:
-   cd frontend
-   npm install
+   <code>cd frontend</code>
+   <code>npm install</code>
 
 ### Usage
 ## Training the Model
 To train the model, start the back-end server and send a request to the training endpoint:
 
 1. Start the back-end server:
-   cd backend
-   python server.py
+   <code>cd backend</code>
+   <code>python server.py</code>
 
 2. Trigger training via the front-end or directly using:
    <code>curl -X POST http://localhost:5000/api/train</code>
