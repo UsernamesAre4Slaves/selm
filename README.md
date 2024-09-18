@@ -47,81 +47,121 @@
 
 ## Project Structure
 ```plaintext
-SELM/
-│
-├── src/                        # Source code for SELM
-│   ├── __init__.py             # Init file to make `src` a package
-│   ├── model/                  # Core language model modules
+├── create_selm_structure.sh
+├── SELM
+│   ├── backend
+│   │   └── server.py
+│   ├── config
+│   │   ├── active_learning_config.yaml
+│   │   ├── distributed_config.yaml
+│   │   ├── evaluation_config.yaml
+│   │   ├── model_config.yaml
+│   │   ├── neuro_evolution_config.yaml
+│   │   └── optuna_config.yaml
+│   ├── data
+│   │   ├── knowledge_graph
+│   │   │   └── graph_data.csv
+│   │   ├── processed
+│   │   ├── raw
+│   │   │   └── 'Weather Data.csv'
+│   │   └── synthetic
+│   ├── frontend
+│   │   ├── package.json
+│   │   ├── public
+│   │   ├── README.md
+│   │   └── src
+│   │       ├── App.js
+│   │       ├── axiosConfig.js
+│   │       ├── components
+│   │       │   ├── Chatbot.js
+│   │       │   ├── ModelEvaluation.js
+│   │       │   └── ModelTraining.js
+│   │       ├── Dashboard.js
+│   │       ├── index.js
+│   │       └── styles
+│   │           ├── Chatbot.css
+│   │           └── index.css
+│   ├── notebooks
+│   │   ├── dynamic_inference.ipynb
+│   │   ├── experiment_1.ipynb
+│   │   ├── hyperparameter_search.ipynb
+│   │   ├── mixed_precision_experiment.ipynb
+│   │   ├── neuro_evolution_experiment.ipynb
+│   │   └── pruning_experiment.ipynb
+│   ├── scripts
+│   │   ├── attention.py
+│   │   ├── data_collection.py
+│   │   ├── data_ingestion.py
+│   │   ├── distributed_inference.py
+│   │   ├── dynamic_inference_test.py
+│   │   ├── evaluate.py
+│   │   ├── neuro_evolution.py
+│   │   ├── prune_and_quantize.py
+│   │   ├── run_neuro_evolution.py
+│   │   └── run_optuna_tuning.py
+│   ├── src
 │   │   ├── __init__.py
-│   │   ├── transformer.py      # Transformer architecture (main model)
-│   │   ├── embedding.py        # Embedding layer module
-│   │   ├── tokenization.py     # Tokenization module (e.g., SentencePiece, BPE)
-│   │   ├── attention.py        # Attention mechanism (e.g., Linformer, Performer)
-│   │   ├── output.py           # Task-specific output heads (e.g., classification, generation)
-│   │   └── dynamic_inference.py # Module for dynamic inference (early exits, conditional compute)
-│   │
-│   ├── optimization/           # Hyperparameter tuning and model optimization
-│   │   ├── __init__.py
-│   │   ├── optuna_tuner.py     # Script for hyperparameter tuning with Optuna
-│   │   ├── pruning.py          # Pruning and quantization modules
-│   │   ├── mixed_precision.py  # Mixed-precision training module
-│   │   ├── low_rank_factorization.py # Module for low-rank matrix factorization
-│   │   ├── distributed_training.py # Distributed model training for large datasets
-│   │   └── cache_optimization.py  # Cache-aware optimization for inference and training
-│   │
-│   ├── knowledge_graph/        # Knowledge graph integration for specific tasks
-│   │   ├── __init__.py
-│   │   ├── graph_utils.py      # Utilities for handling graphs (e.g., loading, querying)
-│   │   ├── gnn.py              # GNN architecture for knowledge graph-based tasks
-│   │   └── sparse_gnn.py       # Sparse GNN implementation for memory efficiency
-│   │
-│   └── tasks/                  # Task-specific modules for fine-tuning
-│       ├── __init__.py
-│       ├── text_classification.py  # Fine-tuning for text classification tasks
-│       ├── summarization.py        # Fine-tuning for text summarization
-│       ├── question_answering.py   # Fine-tuning for question-answering tasks
-│       └── active_learning.py      # Active learning module for data-efficient training
-│
-├── scripts/                    # Scripts for running experiments, training, etc.
-│   ├── train.py                # Main training script for the model
-│   ├── evaluate.py             # Evaluation script to benchmark the model
-│   ├── prune_and_quantize.py   # Script to apply pruning and quantization
-│   ├── run_optuna_tuning.py    # Script for running Optuna hyperparameter search
-│   ├── distributed_inference.py # Script for inference across distributed environments
-│   └── dynamic_inference_test.py # Script for testing dynamic inference mechanisms
-│
-├── config/                     # Configuration files (e.g., YAML, JSON)
-│   ├── model_config.yaml       # Model architecture configuration (e.g., layers, heads)
-│   ├── training_config.yaml    # Training-related configurations (batch size, epochs, etc.)
-│   ├── optuna_config.yaml      # Configuration for hyperparameter tuning
-│   ├── active_learning_config.yaml # Configurations for active learning sampling
-│   └── distributed_config.yaml # Configuration for distributed training and inference
-│
-├── data/                       # Directory for datasets (can be symlinked to save space)
-│   ├── raw/                    # Raw datasets
-│   ├── processed/              # Preprocessed data files
-│   ├── knowledge_graph/        # Knowledge graph data files (e.g., RDF, CSV)
-│   └── synthetic/              # Generated synthetic data for augmentation
-│
-├── tests/                      # Unit tests and integration tests
-│   ├── test_model.py           # Tests for the model components
-│   ├── test_tasks.py           # Tests for task-specific modules
-│   ├── test_optimization.py    # Tests for optimization (pruning, Optuna, mixed precision)
-│   ├── test_gnn.py             # Tests for knowledge graph and GNN integration
-│   └── test_dynamic_inference.py # Tests for dynamic inference and conditional computation
-│
-├── notebooks/                  # Jupyter notebooks for experiments and prototyping
-│   ├── experiment_1.ipynb      # Example notebook for model testing or development
-│   ├── hyperparameter_search.ipynb # Notebook for Optuna-based tuning exploration
-│   ├── pruning_experiment.ipynb    # Example of pruning/quantization experiments
-│   ├── dynamic_inference.ipynb     # Experimenting with dynamic inference strategies
-│   └── mixed_precision_experiment.ipynb # Notebook for mixed-precision training results
-│
-├── requirements.txt            # Python dependencies list
-├── README.md                   # Project overview and setup instructions
-├── LICENSE                     # License file for open-source use (MIT, Apache, etc.)
-├── setup.py                    # Python package setup script for the SELM project
-└── .gitignore                  # Ignore specific files from version control
+│   │   ├── knowledge_graph
+│   │   │   ├── gnn.py
+│   │   │   ├── graph_utils.py
+│   │   │   ├── __init__.py
+│   │   │   └── sparse_gnn.py
+│   │   ├── model
+│   │   │   ├── attention.py
+│   │   │   ├── dynamic_inference.py
+│   │   │   ├── embedding.py
+│   │   │   ├── __init__.py
+│   │   │   ├── output.py
+│   │   │   └── transformer.py
+│   │   ├── neuro_evolution
+│   │   │   ├── crossover.py
+│   │   │   ├── fitness.py
+│   │   │   ├── mutation.py
+│   │   │   ├── neuro_evolution_engine.py
+│   │   │   ├── population.py
+│   │   │   ├── __init__.py
+│   │   │   └── selection.py
+│   │   ├── optimization
+│   │   │   ├── cache_optimization.py
+│   │   │   ├── distributed_training.py
+│   │   │   ├── low_rank_factorization.py
+│   │   │   ├── mixed_precision.py
+│   │   │   ├── __init__.py
+│   │   │   └── optuna_tuner.py
+│   │   ├── scraper
+│   │   │   └── scraper.py
+│   │   └── tasks
+│   │       ├── active_learning.py
+│   │       ├── __init__.py
+│   │       ├── question_answering.py
+│   │       ├── summarization.py
+│   │       └── text_classification.py
+│   └── tests
+│       ├── test_dynamic_inference.py
+│       ├── test_gnn.py
+│       ├── test_model.py
+│       ├── test_neuro_evolution.py
+│       ├── test_optimization.py
+│       └── test_tasks.py
+└── TEST
+    ├── config
+    │   └── neuro_evolution_config.yaml
+    ├── notebooks
+    │   └── neuro_evolution_experiment.ipynb
+    ├── scripts
+    │   ├── neuro_evolution.py
+    │   └── run_neuro_evolution.py
+    ├── src
+    │   └── neuro_evolution
+    │       ├── crossover.py
+    │       ├── fitness.py
+    │       ├── mutation.py
+    │       ├── neuro_evolution_engine.py
+    │       ├── population.py
+    │       ├── __init__.py
+    │       └── selection.py
+    └── tests
+        └── test_neuro_evolution.py
 ```
 
 
