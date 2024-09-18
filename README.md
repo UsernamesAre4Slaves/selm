@@ -16,35 +16,6 @@
 - [Contributing](#contributing)
 - [License](#license)
 
-## Features
-1. **Lightweight Architecture**:
-   - SELM uses a streamlined Transformer architecture optimized with attention mechanisms like Linformer or Performer to reduce computational complexity without sacrificing accuracy.
-   - Embedding layers and tokenization methods are carefully selected (e.g., SentencePiece or Byte Pair Encoding) for memory-efficient processing.
-
-2. **Optimization Techniques**:
-   - **Pruning and Quantization**: Reduces the size and computational demand of the model by removing redundant weights and reducing precision.
-   - **Mixed-Precision Training**: Utilizes a combination of 16-bit and 32-bit floating-point numbers to reduce memory usage while accelerating training on compatible hardware.
-   - **Low-Rank Factorization**: Implements matrix factorization to approximate large weight matrices, reducing model complexity.
-   - **Cache Optimization**: Optimizes memory access and cache utilization during inference, making it more suitable for limited hardware.
-
-3. **Dynamic Inference**:
-   - Implements early exits and conditional compute mechanisms that allow the model to make predictions with less computation when possible, improving real-time responsiveness.
-
-4. **Distributed and Parallel Training**:
-   - Supports distributed training for scaling to larger datasets across multiple machines while maintaining efficiency through cache-aware and multi-node optimizations.
-
-5. **Active Learning**:
-   - Integrates active learning strategies to reduce the amount of labeled data required by selecting the most informative examples for training, thus improving data efficiency.
-
-6. **Knowledge Graph Integration**:
-   - Enhances model reasoning with a knowledge graph, utilizing Graph Neural Networks (GNN) to bring context-aware intelligence and relational learning into tasks such as question answering and summarization.
-
-7. **Task-Specific Fine-Tuning**:
-   - Fine-tuning modules for various natural language tasks like text classification, summarization, and question answering ensure task adaptability without bloating the base model.
-
-8. **Automated Hyperparameter Tuning**: 
-   - Uses Optuna for automated tuning of the model architecture and training parameters.
-
 ## Project Structure
 ```plaintext
 ├── create_selm_structure.sh
