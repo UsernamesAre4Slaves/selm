@@ -1,6 +1,6 @@
 # SELM (Small Efficient Language Model)
 
-**SELM** is a lightweight, modular, and highly efficient language model designed to run on minimal hardware without requiring a GPU. It leverages modern techniques such as knowledge graph integration, task-specific fine-tuning, pruning, and quantization to deliver competitive NLP performance in constrained environments. SELM is inspired by minimalist Linux distributions, focusing on efficiency and compact design.
+**SELM** is a lightweight, modular, and highly efficient language model designed to run on minimal hardware without requiring a GPU. It leverages modern techniques such as knowledge graph integration, task-specific fine-tuning, pruning, and quantization to deliver competitive NLP performance in constrained environments. SELM is inspired by minimalist Linux distribution philosophies, focusing on efficiency and compact design.
 
 ![image](https://github.com/user-attachments/assets/7e4c6d44-1801-4a58-9dd3-854223edc817)
 
