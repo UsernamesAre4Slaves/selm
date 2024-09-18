@@ -4,7 +4,6 @@
 
 ![image](https://github.com/user-attachments/assets/7e4c6d44-1801-4a58-9dd3-854223edc817)
 
-
 ## Table of Contents
 - [Features](#features)
 - [Project Structure](#project-structure)
@@ -14,7 +13,6 @@
   - [Evaluating the Model](#evaluating-the-model)
   - [Pruning and Quantization](#pruning-and-quantization)
   - [Hyperparameter Tuning](#hyperparameter-tuning)
-- [Tasks](#tasks)
 - [Contributing](#contributing)
 - [License](#license)
 
@@ -48,8 +46,7 @@
    - Uses Optuna for automated tuning of the model architecture and training parameters.
 
 ## Project Structure
-<div style="overflow-y: scroll; height: 200px; width: 100%; padding: 10px; border: 1px solid #ccc;">
-  <pre><code>
+```plaintext
 SELM/
 │
 ├── src/                        # Source code for SELM
@@ -125,8 +122,7 @@ SELM/
 ├── LICENSE                     # License file for open-source use (MIT, Apache, etc.)
 ├── setup.py                    # Python package setup script for the SELM project
 └── .gitignore                  # Ignore specific files from version control
-  </code></pre>
-</div>
+```
 
 
 ## Installation
