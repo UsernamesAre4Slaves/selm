@@ -1,4 +1,4 @@
-## Project Structure
+## File System
 ```plaintext
 ├── create_selm_structure.sh
 ├── SELM
