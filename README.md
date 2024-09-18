@@ -27,8 +27,85 @@
 - **Automated Hyperparameter Tuning**: Use Optuna for automated tuning of the model architecture and training parameters.
 
 ## Project Structure
-The SELM project is organized into the following directories and files:
-SELM/ ├── backend/ # Back-end server code │ ├── server.py # Flask server to handle API requests │ └── requirements.txt # Python dependencies for the back-end │ ├── frontend/ # Front-end web application │ ├── public/ # Static files (e.g., index.html) │ ├── src/ # Source code for front-end │ │ ├── components/ # React components │ │ ├── App.js # Main application component │ │ ├── index.js # Entry point for React │ │ ├── styles/ # CSS or styling files │ │ └── axiosConfig.js # Axios configuration for API calls │ ├── package.json # Dependencies and scripts │ └── README.md # Front-end specific documentation │ ├── src/ # Source code for SELM │ ├── init.py │ ├── model/ │ ├── optimization/ │ ├── knowledge_graph/ │ └── tasks/ │ ├── scripts/ # Scripts for running experiments, training, etc. │ ├── config/ # Configuration files │ ├── data/ # Directory for datasets │ ├── tests/ # Unit tests and integration tests │ ├── notebooks/ # Jupyter notebooks for experiments │ ├── requirements.txt # Python dependencies list ├── README.md # Project overview and setup instructions ├── setup.py # Python package setup script ├── LICENSE # License file └── .gitignore # Ignore specific files from version control
+<div style="overflow-y: scroll; height: 200px; width: 100%; padding: 10px; border: 1px solid #ccc;">
+  <pre><code>
+SELM/
+│
+├── src/                        # Source code for SELM
+│   ├── __init__.py             # Init file to make `src` a package
+│   ├── model/                  # Core language model modules
+│   │   ├── __init__.py
+│   │   ├── transformer.py      # Transformer architecture (main model)
+│   │   ├── embedding.py        # Embedding layer module
+│   │   ├── tokenization.py     # Tokenization module (e.g., SentencePiece, BPE)
+│   │   ├── attention.py        # Attention mechanism (e.g., Linformer, Performer)
+│   │   ├── output.py           # Task-specific output heads (e.g., classification, generation)
+│   │   └── dynamic_inference.py # Module for dynamic inference (early exits, conditional compute)
+│   │
+│   ├── optimization/           # Hyperparameter tuning and model optimization
+│   │   ├── __init__.py
+│   │   ├── optuna_tuner.py     # Script for hyperparameter tuning with Optuna
+│   │   ├── pruning.py          # Pruning and quantization modules
+│   │   ├── mixed_precision.py  # Mixed-precision training module
+│   │   ├── low_rank_factorization.py # Module for low-rank matrix factorization
+│   │   ├── distributed_training.py # Distributed model training for large datasets
+│   │   └── cache_optimization.py  # Cache-aware optimization for inference and training
+│   │
+│   ├── knowledge_graph/        # Knowledge graph integration for specific tasks
+│   │   ├── __init__.py
+│   │   ├── graph_utils.py      # Utilities for handling graphs (e.g., loading, querying)
+│   │   ├── gnn.py              # GNN architecture for knowledge graph-based tasks
+│   │   └── sparse_gnn.py       # Sparse GNN implementation for memory efficiency
+│   │
+│   └── tasks/                  # Task-specific modules for fine-tuning
+│       ├── __init__.py
+│       ├── text_classification.py  # Fine-tuning for text classification tasks
+│       ├── summarization.py        # Fine-tuning for text summarization
+│       ├── question_answering.py   # Fine-tuning for question-answering tasks
+│       └── active_learning.py      # Active learning module for data-efficient training
+│
+├── scripts/                    # Scripts for running experiments, training, etc.
+│   ├── train.py                # Main training script for the model
+│   ├── evaluate.py             # Evaluation script to benchmark the model
+│   ├── prune_and_quantize.py   # Script to apply pruning and quantization
+│   ├── run_optuna_tuning.py    # Script for running Optuna hyperparameter search
+│   ├── distributed_inference.py # Script for inference across distributed environments
+│   └── dynamic_inference_test.py # Script for testing dynamic inference mechanisms
+│
+├── config/                     # Configuration files (e.g., YAML, JSON)
+│   ├── model_config.yaml       # Model architecture configuration (e.g., layers, heads)
+│   ├── training_config.yaml    # Training-related configurations (batch size, epochs, etc.)
+│   ├── optuna_config.yaml      # Configuration for hyperparameter tuning
+│   ├── active_learning_config.yaml # Configurations for active learning sampling
+│   └── distributed_config.yaml # Configuration for distributed training and inference
+│
+├── data/                       # Directory for datasets (can be symlinked to save space)
+│   ├── raw/                    # Raw datasets
+│   ├── processed/              # Preprocessed data files
+│   ├── knowledge_graph/        # Knowledge graph data files (e.g., RDF, CSV)
+│   └── synthetic/              # Generated synthetic data for augmentation
+│
+├── tests/                      # Unit tests and integration tests
+│   ├── test_model.py           # Tests for the model components
+│   ├── test_tasks.py           # Tests for task-specific modules
+│   ├── test_optimization.py    # Tests for optimization (pruning, Optuna, mixed precision)
+│   ├── test_gnn.py             # Tests for knowledge graph and GNN integration
+│   └── test_dynamic_inference.py # Tests for dynamic inference and conditional computation
+│
+├── notebooks/                  # Jupyter notebooks for experiments and prototyping
+│   ├── experiment_1.ipynb      # Example notebook for model testing or development
+│   ├── hyperparameter_search.ipynb # Notebook for Optuna-based tuning exploration
+│   ├── pruning_experiment.ipynb    # Example of pruning/quantization experiments
+│   ├── dynamic_inference.ipynb     # Experimenting with dynamic inference strategies
+│   └── mixed_precision_experiment.ipynb # Notebook for mixed-precision training results
+│
+├── requirements.txt            # Python dependencies list
+├── README.md                   # Project overview and setup instructions
+├── LICENSE                     # License file for open-source use (MIT, Apache, etc.)
+├── setup.py                    # Python package setup script for the SELM project
+└── .gitignore                  # Ignore specific files from version control
+  </code></pre>
+</div>
 
 
 ## Installation
