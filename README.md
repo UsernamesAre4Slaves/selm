@@ -138,36 +138,34 @@ To train the model, start the back-end server and send a request to the training
    python server.py
 
 2. Trigger training via the front-end or directly using:
-   curl -X POST http://localhost:5000/api/train
+   <code>curl -X POST http://localhost:5000/api/train</code>
 
 ## Evaluating the Model
 To evaluate the model, send a request to the evaluation endpoint:
-curl -X GET http://localhost:5000/api/evaluate
+<code>curl -X GET http://localhost:5000/api/evaluate</code>
 
 ## Pruning and Quantization
-curl -X POST http://localhost:5000/api/prune_and_quantize
+<code>curl -X POST http://localhost:5000/api/prune_and_quantize</code>
 
 ## Hyperparameter Tuning
 To run Optuna hyperparameter tuning:
-curl -X POST http://localhost:5000/api/optimize
+<code>curl -X POST http://localhost:5000/api/optimize</code>
 
 ### Tasks
 
 ## SELM supports the following tasks:
-
-    Text Classification: Classify text into predefined categories.
-    Summarization: Generate summaries of longer texts.
-    Question Answering: Answer questions based on provided context.
+Text Classification: Classify text into predefined categories.
+Summarization: Generate summaries of longer texts.
+Question Answering: Answer questions based on provided context.
 
 ### Contributing
 
 ## Contributions are welcome! Please follow these steps:
-
-    Fork the repository.
-    Create a feature branch.
-    Commit your changes.
-    Push to the feature branch.
-    Create a pull request.
+Fork the repository.
+Create a feature branch.
+Commit your changes.
+Push to the feature branch.
+Create a pull request.
 
 ### License
 This project is licensed under the MIT License - see the LICENSE file for details.
