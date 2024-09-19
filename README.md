@@ -6,7 +6,7 @@
 
 ## Table of Contents
 - [Overview](overview.md)
-- [File System](file_system.md)
+- [File System](structure.md)
 - [Installation](#installation)
 - [Usage](#usage)
   - [Training the Model](#training-the-model)
