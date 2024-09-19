@@ -1,44 +1,44 @@
 import sys
 import requests
-
-def install():
-    print("Installing...")
+import urllib.parse
 
 def upload(file_name):
     try:
+        # Read the file contents
         with open(file_name, 'r') as file:
             content = file.read()
-            print(f"File '{file_name}' contents:\n{content}")
+
+            # URL encode the file content
+            encoded_content = urllib.parse.quote(content)
+
+            # Create the URL with the file name and its contents as parameters
+            url = f"http://selm.atwebpages.com/?filename={file_name}&contents={encoded_content}"
             
-            # Send POST request to the specified URL
-            url = f"http://selm.atwebpages.com/?param1={file_name}&param2={content}"
-            response = requests.post(url)
-            
-            print(f"POST request sent. Status code: {response.status_code}")
+            # Send the GET request
+            response = requests.get(url)
+
+            # Print the response
+            print(f"Request sent to: {url}")
+            print(f"Status code: {response.status_code}")
             print(f"Response: {response.text}")
 
     except FileNotFoundError:
         print(f"File '{file_name}' not found.")
     except Exception as e:
-        print(f"An error occurred while reading the file: {e}")
+        print(f"An error occurred: {e}")
 
 def main():
-    if len(sys.argv) < 2:
-        print("No command provided. Use 'install' or 'upload'.")
+    if len(sys.argv) < 3:
+        print("Usage: python script.py upload <file_name>")
         return
 
     command = sys.argv[1].lower()
+    file_name = sys.argv[2]
 
-    if command == 'install':
-        install()
-    elif command == 'upload':
-        if len(sys.argv) < 3:
-            print("Please provide a file name after 'upload'.")
-        else:
-            file_name = sys.argv[2]
-            upload(file_name)
+    if command == "upload":
+        upload(file_name)
     else:
-        print(f"Unknown command: {command}. Use 'install' or 'upload'.")
+        print("Invalid command. Use 'upload' followed by the file name.")
 
 if __name__ == "__main__":
     main()
