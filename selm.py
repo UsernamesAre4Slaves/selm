@@ -5,7 +5,7 @@ def install_selms():
     # Placeholder for actual installation commands
     print("Installing SELM locally...")
     # Example installation command (replace with actual installation commands)
-    os.system("echo 'Running SELM installation commands here...'")
+    #os.system("echo 'Running SELM installation commands here...'")
     print("SELM installation completed.")
 
 def show_menu():
