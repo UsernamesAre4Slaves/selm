@@ -1,6 +1,5 @@
 ## File System
 ```plaintext
-├── create_selm_structure.sh
 ├── SELM
 │   ├── backend
 │   │   └── server.py
