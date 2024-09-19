@@ -3,10 +3,6 @@ import sys
 def install():
     print("Installing...")
 
-def exit_script():
-    print("Exiting...")
-    sys.exit()
-
 def upload(file_name):
     try:
         with open(file_name, 'r') as file:
@@ -19,15 +15,13 @@ def upload(file_name):
 
 def main():
     if len(sys.argv) < 2:
-        print("No command provided. Use 'install', 'exit', or 'upload'.")
+        print("No command provided. Use 'install' or 'upload'.")
         return
 
     command = sys.argv[1].lower()
 
     if command == 'install':
         install()
-    elif command == 'exit':
-        exit_script()
     elif command == 'upload':
         if len(sys.argv) < 3:
             print("Please provide a file name after 'upload'.")
@@ -35,7 +29,7 @@ def main():
             file_name = sys.argv[2]
             upload(file_name)
     else:
-        print(f"Unknown command: {command}. Use 'install', 'exit', or 'upload'.")
+        print(f"Unknown command: {command}. Use 'install' or 'upload'.")
 
 if __name__ == "__main__":
     main()
