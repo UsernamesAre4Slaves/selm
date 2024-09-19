@@ -1,3 +1,3 @@
 
-# Print "Hello, Universe!" to the console
-print("Hello, Universe!")
+# Print "Hello from Selm on GitHub" to the console
+print("Hello from Selm on GitHub")
