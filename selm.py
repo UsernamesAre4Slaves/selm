@@ -1,6 +1,3 @@
-import os
-import sys
-
 def install_selms():
     """
     Function to handle SELM installation locally.
