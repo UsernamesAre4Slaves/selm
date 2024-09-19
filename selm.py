@@ -5,7 +5,7 @@ def fetch_readme(url):
     try:
         response = requests.get(url)
         response.raise_for_status()
-        return response.text
+        return response.text.rstrip()  # Remove trailing newline characters
     except requests.RequestException as e:
         print(f"Failed to fetch README: {e}")
         return None
