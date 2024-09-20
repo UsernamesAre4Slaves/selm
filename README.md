@@ -103,7 +103,7 @@
 ---
 
 ## **🔗 External Resources**
-- [📖 **Official Documentation**](https://docs.example.com)  
+- [📖 **Official Documentation**](https://github.com/UsernamesAre4Slaves/UsernamesAre4slaves.github.io)  
   _Detailed project documentation._
 - [💬 **Community Forum**](https://forum.example.com)  
   _Ask questions and interact with other users._
