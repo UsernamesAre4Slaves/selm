@@ -5,7 +5,7 @@
 ![image](https://github.com/user-attachments/assets/7e4c6d44-1801-4a58-9dd3-854223edc817)
 
 ## Table of Contents
-- [Overview](overview.md)
+- [Overview](docs/overview.md)
 - [Structure](structure.md)
 - [Installation](#installation)
 - [Usage](#usage)
