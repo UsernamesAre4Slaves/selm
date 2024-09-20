@@ -12,7 +12,7 @@ def upload(file_name):
             encoded_content = urllib.parse.quote(content)
 
             # Create the URL with the file name and its contents as parameters
-            url = f"http://selmai.pythonanywhere.com/?filename={file_name}&contents={encoded_content}"
+            url = f"http://selmai.pythonanywhere.com/?param1={file_name}&param2={encoded_content}"
             
             # Send the GET request
             response = requests.get(url)
