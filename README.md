@@ -9,7 +9,7 @@
 ---
 
 ## **🚀 Introduction**
-- [📖 **Overview**](#overview)  
+- [📖 **Overview**](docs/overview.md)  
   _Brief description of the project and its purpose._
 - [🎯 **Project Goals**](#project-goals)  
   _Key objectives and milestones of the project._
@@ -103,7 +103,7 @@
 ---
 
 ## **🔗 External Resources**
-- [📖 **Official Documentation**](https://github.com/UsernamesAre4Slaves/UsernamesAre4slaves.github.io)  
+- [📖 **Official Documentation**](https://usernamesare4slaves.github.io/)  
   _Detailed project documentation._
 - [💬 **Community Forum**](https://forum.example.com)  
   _Ask questions and interact with other users._
